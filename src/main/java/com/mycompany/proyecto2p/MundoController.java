@@ -1,4 +1,4 @@
-package com.mycompany.mavenproject1;
+package com.mycompany.proyecto2p;
 
 import java.net.URL;
 import java.util.ResourceBundle;
