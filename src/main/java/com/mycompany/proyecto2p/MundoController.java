@@ -36,9 +36,7 @@ public class MundoController implements Initializable {
                     gridpane.add(imgvw, x, y);
                 }
             }
-            
         }
-        
         flwPn.getChildren().add(gridpane);
     }
     
