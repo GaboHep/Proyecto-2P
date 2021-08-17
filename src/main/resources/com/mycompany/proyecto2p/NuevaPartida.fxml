@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.FlowPane?>
+
+
+<FlowPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" vgap="20.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.proyecto2p.NuevaPartidaController">
+   <children>
+      <FlowPane alignment="CENTER" hgap="20.0">
+         <children>
+            <Label text="Nombre de la ciudad:" />
+            <TextField fx:id="txtNombreCiudad" />
+         </children>
+      </FlowPane>
+      <FlowPane alignment="CENTER" hgap="20.0">
+         <children>
+            <Label text="Nombre del alcalde:" />
+            <TextField fx:id="txtNombreAlcalde" />
+         </children>
+      </FlowPane>
+      <FlowPane alignment="CENTER" hgap="20.0">
+         <children>
+            <Label text="Nivel de dificultad" />
+            <RadioButton fx:id="rdbttnFacil" mnemonicParsing="false" text="Fácil">
+               <toggleGroup>
+                  <ToggleGroup fx:id="Dificultad" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="rdbttnMedio" mnemonicParsing="false" text="Medio" toggleGroup="$Dificultad" />
+            <RadioButton fx:id="rdbttnDificil" mnemonicParsing="false" text="Difífcil" toggleGroup="$Dificultad" />
+         </children>
+      </FlowPane>
+      <FlowPane alignment="CENTER" hgap="180.0">
+         <children>
+            <Button fx:id="bttnRegresar" mnemonicParsing="false" onAction="#regresarAlMenu" text="Regresar" />
+            <Button fx:id="bttnComenzar" mnemonicParsing="false" text="Comenzar" />
+         </children>
+      </FlowPane>
+   </children>
+</FlowPane>
