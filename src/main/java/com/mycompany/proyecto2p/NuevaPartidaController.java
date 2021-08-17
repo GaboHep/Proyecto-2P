@@ -1,6 +1,5 @@
 package com.mycompany.proyecto2p;
 
-import com.mycompany.proyecto2p.App;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -45,10 +44,8 @@ public class NuevaPartidaController implements Initializable {
 
     @FXML
     private void comenzarNuevaPartida(ActionEvent event) throws IOException {
-
-        Partida partida = new Partida();
         
-        partida.crearCiudad(txtNombreCiudad, txtNombreAlcalde, calcularPresupuestoInicial());
+        Partida.crearNuevaPartida(txtNombreCiudad, txtNombreAlcalde, calcularPresupuestoInicial());
         
         App.setRoot("Mundo");
     }
