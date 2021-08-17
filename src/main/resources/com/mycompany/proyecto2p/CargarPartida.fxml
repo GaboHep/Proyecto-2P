@@ -11,7 +11,7 @@
       <FlowPane alignment="CENTER" hgap="20.0">
          <children>
             <ImageView fitHeight="100.0" fitWidth="100.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
-            <FlowPane alignment="CENTER" columnHalignment="CENTER" orientation="VERTICAL" prefHeight="49.0" prefWidth="136.0">
+            <FlowPane alignment="CENTER" orientation="VERTICAL" prefHeight="49.0" prefWidth="136.0">
                <children>
                   <Label text="Nombre de la ciudad" />
                   <Label text="Nombre del Alcalde" />

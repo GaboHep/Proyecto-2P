@@ -35,7 +35,7 @@ public class NuevaPartidaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
     }    
     
     @FXML
@@ -43,4 +43,30 @@ public class NuevaPartidaController implements Initializable {
         App.setRoot("Menu");
     }
 
+    @FXML
+    private void comenzarNuevaPartida(ActionEvent event) throws IOException {
+
+        Partida partida = new Partida();
+        
+        partida.crearCiudad(txtNombreCiudad, txtNombreAlcalde, calcularPresupuestoInicial());
+        
+        App.setRoot("Mundo");
+    }
+    
+    public int calcularPresupuestoInicial() {
+        int presupuestoInicial;
+        
+        if (Dificultad.getSelectedToggle() == rdbttnFacil) {
+            presupuestoInicial = 20000;
+            return presupuestoInicial;
+        }
+        else if (Dificultad.getSelectedToggle() == rdbttnMedio) {
+            presupuestoInicial = 10000;
+            return presupuestoInicial;
+        }
+        else {
+            presupuestoInicial = 5000;
+            return presupuestoInicial;
+        }
+    }
 }
