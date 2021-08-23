@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
@@ -14,32 +15,41 @@ public class MundoController implements Initializable {
 
     @FXML
     private FlowPane flwPn;
+    @FXML
+    private Label lblTiempo;
+    @FXML
+    private Label lblPresupuesto;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        fillGrid(5, 5);
+        
+        Tiempo tiempo = new Tiempo();
+        
+        Thread hiloDelTiempo = new Thread(() -> Tiempo.transcursoDelTiempo(lblTiempo, tiempo));
+        
+        hiloDelTiempo.start();
+        
+        llenarTerreno(5, 5);
     }
     
-    public void fillGrid(int Columns, int Rows) {
+    public void llenarTerreno(int Columnas, int Filas) {
         
         flwPn.setAlignment(Pos.CENTER);
         
         GridPane gridpane = new GridPane();
         
-        if (Columns > 0 && Rows > 0) {
+        if (Columnas > 0 && Filas > 0) {
             
             Image grassTile = new Image("/assets/grassTile.png", 50, 50, true, true);
             
-            for (int x = 0; x < Columns; x++) {
-                for (int y = 0; y < Rows; y++) {
+            for (int x = 0; x < Columnas; x++) {
+                for (int y = 0; y < Filas; y++) {
                     ImageView imgvw = new ImageView(grassTile);
                     gridpane.add(imgvw, x, y);
                 }
             }
-            
         }
-        
         flwPn.getChildren().add(gridpane);
     }
-    
+   
 }
