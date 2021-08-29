@@ -1,5 +1,6 @@
 package com.mycompany.proyecto2p;
 
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -30,6 +31,12 @@ public class MundoController implements Initializable {
         hiloDelTiempo.start();
         
         llenarTerreno(5, 5);
+        
+        try {
+            Servicio.llenarServicios();
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
     }
     
     public void llenarTerreno(int Columnas, int Filas) {
