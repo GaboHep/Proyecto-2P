@@ -44,26 +44,7 @@ public class NuevaPartidaController implements Initializable {
 
     @FXML
     private void comenzarNuevaPartida(ActionEvent event) throws IOException {
-        
-        Partida.crearNuevaPartida(txtNombreCiudad, txtNombreAlcalde, calcularPresupuestoInicial());
-        
         App.setRoot("Mundo");
     }
     
-    public int calcularPresupuestoInicial() {
-        int presupuestoInicial;
-        
-        if (Dificultad.getSelectedToggle() == rdbttnFacil) {
-            presupuestoInicial = 20000;
-            return presupuestoInicial;
-        }
-        else if (Dificultad.getSelectedToggle() == rdbttnMedio) {
-            presupuestoInicial = 10000;
-            return presupuestoInicial;
-        }
-        else {
-            presupuestoInicial = 5000;
-            return presupuestoInicial;
-        }
-    }
 }

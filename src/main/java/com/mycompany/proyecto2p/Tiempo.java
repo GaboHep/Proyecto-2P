@@ -22,7 +22,6 @@ public class Tiempo {
                 Thread.sleep(5000);
             }
             catch(InterruptedException ex) {
-                
             }
         }
     }    
