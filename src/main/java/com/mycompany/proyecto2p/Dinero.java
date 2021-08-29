@@ -18,7 +18,7 @@ public class Dinero {
     private double impuestoRenta;
     private double impuestoContaminacion;
 //Selección de dinero en función de su dificultad
-    
+/*    
     public Dinero(double presupuesto){
         if(){
             this.presupuesto = PRESUPUESTO_INICIAL_FACIL;
@@ -33,7 +33,7 @@ public class Dinero {
     public double gananciaComercial(double presupuesto,){
         
     } 
-            
+*/            
             
     public double pagoImpuestos(double presupuesto,int ALUMBRADO_IMPUESTO, int AGUA_IMPUESTO, int SUELO_IMPUESTO){
         presupuesto-=(ALUMBRADO_IMPUESTO+AGUA_IMPUESTO+SUELO_IMPUESTO);
