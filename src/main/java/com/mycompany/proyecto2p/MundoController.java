@@ -27,14 +27,7 @@ public class MundoController implements Initializable {
     private HBox hboxInfo;
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        
-        Tiempo tiempo = new Tiempo();
-        
-        Thread hiloDelTiempo = new Thread(() -> Tiempo.transcursoDelTiempo(lblTiempo, tiempo));
-        
-        hiloDelTiempo.start();
-        
+    public void initialize(URL url, ResourceBundle rb) {        
 
         llenarTerreno(8, 8);
     }

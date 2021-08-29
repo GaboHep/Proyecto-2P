@@ -44,23 +44,29 @@ public class NuevaPartidaController implements Initializable {
 
     @FXML
     private void comenzarNuevaPartida(ActionEvent event) throws IOException {
-        Ciudad c=new Ciudad(txtNombreCiudad.getText(),txtNombreAlcalde.getText(),calcularPresupuesto());
+        Ciudad ciudad = new Ciudad(txtNombreCiudad.getText(), txtNombreAlcalde.getText(), calcularPresupuesto());
         App.setRoot("Mundo");
     }
+    
     //Método que a partir de los radioButton del menu selecciona el valor del presupuesto con el que se crea la ciudad
     public double calcularPresupuesto(){
-        double presupuesto=0;
+        
+        double presupuesto = 0;
+        
         if(rdbttnFacil.isSelected()){
-            presupuesto=Configuracion.PRESUPUESTO_INICIAL_FACIL;
-        }else if(rdbttnMedio.isSelected()){
-            presupuesto=Configuracion.PRESUPUESTO_INICIAL_MEDIO;
-        }else if(rdbttnDificil.isSelected()){
-            presupuesto=Configuracion.PRESUPUESTO_INICIAL_DIFICIL;
+            
+            presupuesto = Configuracion.PRESUPUESTO_INICIAL_FACIL;
+        }
+        
+        else if(rdbttnMedio.isSelected()){
+            presupuesto = Configuracion.PRESUPUESTO_INICIAL_MEDIO;
+        }
+        
+        else if(rdbttnDificil.isSelected()){
+            presupuesto = Configuracion.PRESUPUESTO_INICIAL_DIFICIL;
         }
         
         return presupuesto;
-              
-        
         
     }
     
