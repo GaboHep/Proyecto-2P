@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Ciudad {
     private String nombre;
     private String nombreAlcalde;
-    private String tiempo;
+    private Tiempo tiempo;
     private int presupuesto;
     private ArrayList <Servicio> servicios=new ArrayList<>();
 
@@ -30,5 +30,7 @@ public class Ciudad {
     public void disminuirPresupuesto(int cantidad){
         presupuesto=presupuesto-cantidad;
     }
-    
+    public void aumentarPresupuesto(int cantidad){
+        presupuesto=presupuesto+cantidad;
+    }
 }
