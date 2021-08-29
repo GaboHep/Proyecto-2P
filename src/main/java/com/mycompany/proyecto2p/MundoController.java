@@ -27,10 +27,21 @@ public class MundoController implements Initializable {
     private HBox hboxInfo;
 
     @Override
-    public void initialize(URL url, ResourceBundle rb) {        
+
+    public void initialize(URL url, ResourceBundle rb) {
+        //Acción que inicia el tiempo de la ciudad      
 
         llenarTerreno(8, 8);
     }
+    
+   /* public void controlarTiempo(){
+        Tiempo tiempo = new Tiempo();
+        
+        Thread hiloDelTiempo = new Thread(() -> Tiempo.transcursoDelTiempo(lblTiempo, tiempo));
+        
+        hiloDelTiempo.start();
+
+    }*/
     
     public void llenarTerreno(int Columnas, int Filas) {
               
@@ -46,7 +57,7 @@ public class MundoController implements Initializable {
                 for (int y = 0; y < Filas; y++) {
                     StackPane stack=new StackPane();
                     ImageView imgvw = new ImageView(grassTile);
-                                       
+                                                          
                     stack.getChildren().addAll(imgvw);
                     gridpane.add(stack, x, y);
                 }

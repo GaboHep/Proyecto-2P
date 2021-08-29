@@ -34,6 +34,9 @@ public class Ciudad {
     public void setPresupuesto(int presupuesto) {
         this.presupuesto = presupuesto;
     }
+
+    
+    
     
     //Metodos que sirven para cuando se gaste o gane dinero en la ciudad.
     public void disminuirPresupuesto(int cantidad){

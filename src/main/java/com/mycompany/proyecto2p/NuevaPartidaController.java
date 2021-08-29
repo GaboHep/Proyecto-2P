@@ -56,18 +56,16 @@ public class NuevaPartidaController implements Initializable {
         if(rdbttnFacil.isSelected()){
             
             presupuesto = Configuracion.PRESUPUESTO_INICIAL_FACIL;
-        }
-        
+        }  
         else if(rdbttnMedio.isSelected()){
             presupuesto = Configuracion.PRESUPUESTO_INICIAL_MEDIO;
         }
-        
         else if(rdbttnDificil.isSelected()){
             presupuesto = Configuracion.PRESUPUESTO_INICIAL_DIFICIL;
         }
         
-        return presupuesto;
-        
+        return presupuesto; 
+
     }
     
 }
