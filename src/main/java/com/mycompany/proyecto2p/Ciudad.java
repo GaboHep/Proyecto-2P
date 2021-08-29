@@ -35,9 +35,7 @@ public class Ciudad {
         this.presupuesto = presupuesto;
     }
 
-    public void setTiempo(Tiempo tiempo) {
-        this.tiempo = tiempo;
-    }
+    
     
     
     //Metodos que sirven para cuando se gaste o gane dinero en la ciudad.

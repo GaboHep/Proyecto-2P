@@ -29,21 +29,19 @@ public class MundoController implements Initializable {
     @Override
 
     public void initialize(URL url, ResourceBundle rb) {
-        //Acción que inicia el tiempo de la ciudad.
-        controlarTiempo();
-        
+        //Acción que inicia el tiempo de la ciudad      
 
         llenarTerreno(8, 8);
     }
     
-    public void controlarTiempo(){
+   /* public void controlarTiempo(){
         Tiempo tiempo = new Tiempo();
         
         Thread hiloDelTiempo = new Thread(() -> Tiempo.transcursoDelTiempo(lblTiempo, tiempo));
         
         hiloDelTiempo.start();
 
-    }
+    }*/
     
     public void llenarTerreno(int Columnas, int Filas) {
               
