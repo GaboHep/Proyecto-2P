@@ -59,9 +59,7 @@ public class NuevaPartidaController implements Initializable {
         }
         
         return presupuesto;
-              
-        
-        
+                
     }
     
 }

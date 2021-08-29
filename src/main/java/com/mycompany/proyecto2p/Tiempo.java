@@ -18,9 +18,11 @@ public class Tiempo {
         
         while (true) {
             try {
+                
                 Platform.runLater(() -> lblTiempo.setText(tiempo.getFecha().toString()));
                 tiempo.siguienteDia();
                 Thread.sleep(Configuracion.DURACION_DIA_SEGUNDOS * 1000);
+                
             }
             catch(InterruptedException ex) {
             }
