@@ -27,6 +27,7 @@ public class MundoController implements Initializable {
     private HBox hboxInfo;
 
     @Override
+
     public void initialize(URL url, ResourceBundle rb) {
         //Acción que inicia el tiempo de la ciudad.
         controlarTiempo();
@@ -41,6 +42,7 @@ public class MundoController implements Initializable {
         Thread hiloDelTiempo = new Thread(() -> Tiempo.transcursoDelTiempo(lblTiempo, tiempo));
         
         hiloDelTiempo.start();
+
     }
     
     public void llenarTerreno(int Columnas, int Filas) {

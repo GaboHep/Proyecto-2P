@@ -13,7 +13,7 @@ public class Configuracion {
     public static final int DURACION_DIA_SEGUNDOS = 3;
     public static final int DURACION_MES_SEGUNDOS = 90;
     public static final int CONTAMINACION_IMPUESTO = 150;
-    public static final int VECINDARIO = 3;
+    public static final int VECINDARIO = 1;
     public static final int MESES_QUIEBRA = 3;    
     
 }
