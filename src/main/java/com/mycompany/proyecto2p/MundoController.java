@@ -40,7 +40,7 @@ public class MundoController implements Initializable {
         
         if (Columnas > 0 && Filas > 0) {
             
-            Image grassTile = new Image("/assets/grassTile.png", 50, 50, true, true);
+            Image grassTile = new Image("/servicios/grassTile.png", 50, 50, true, true);
             
             for (int x = 0; x < Columnas; x++) {
                 for (int y = 0; y < Filas; y++) {
