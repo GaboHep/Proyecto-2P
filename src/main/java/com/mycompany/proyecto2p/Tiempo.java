@@ -12,7 +12,6 @@ public class Tiempo {
     
     public void siguienteDia() {
         fecha = fecha.plusDays(1);
-        
     }
 
     public static void transcursoDelTiempo(Label lblTiempo, Tiempo tiempo) {
@@ -21,7 +20,7 @@ public class Tiempo {
             try {
                 Platform.runLater(() -> lblTiempo.setText(tiempo.getFecha().toString()));
                 tiempo.siguienteDia();
-                Thread.sleep(5000);
+                Thread.sleep(Configuracion.DURACION_DIA_SEGUNDOS * 1000);
             }
             catch(InterruptedException ex) {
             }
@@ -31,13 +30,11 @@ public class Tiempo {
     
     public LocalDate getFecha() {
         return fecha;
-        
     }
 
     @Override
     public String toString() {
         String resultado = fecha.format(formato);
         return resultado;
-        
     }
 }

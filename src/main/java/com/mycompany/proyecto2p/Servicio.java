@@ -1,8 +1,6 @@
 package com.mycompany.proyecto2p;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -51,5 +49,8 @@ public class Servicio {
         }
         
     }
+    
+    // ponerServicio
+    // quitarServicio
     
 }
