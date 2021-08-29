@@ -9,17 +9,22 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 
 public class MundoController implements Initializable {
 
     @FXML
-    private FlowPane flwPn;
+    private BorderPane borderPane;
     @FXML
     private Label lblTiempo;
     @FXML
     private Label lblPresupuesto;
+    @FXML
+    private HBox hboxInfo;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -30,33 +35,36 @@ public class MundoController implements Initializable {
         
         hiloDelTiempo.start();
         
-        llenarTerreno(5, 5);
-        
-        try {
-            Servicio.llenarServicios();
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        }
+
+        llenarTerreno(8, 8);
     }
     
     public void llenarTerreno(int Columnas, int Filas) {
-        
-        flwPn.setAlignment(Pos.CENTER);
-        
+              
         GridPane gridpane = new GridPane();
         
         if (Columnas > 0 && Filas > 0) {
             
+            
             Image grassTile = new Image("/servicios/grassTile.png", 50, 50, true, true);
+                       
             
             for (int x = 0; x < Columnas; x++) {
                 for (int y = 0; y < Filas; y++) {
+                    StackPane stack=new StackPane();
                     ImageView imgvw = new ImageView(grassTile);
-                    gridpane.add(imgvw, x, y);
+                                       
+                    stack.getChildren().addAll(imgvw);
+                    gridpane.add(stack, x, y);
                 }
             }
         }
-        flwPn.getChildren().add(gridpane);
+        
+        borderPane.setCenter(gridpane);
+        
+       
+        
     }
    
 }
+
