@@ -1,5 +1,10 @@
 package com.mycompany.proyecto2p;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 
 public class Servicio {
@@ -18,26 +23,33 @@ public class Servicio {
         this.precioMensual = precioMensual;
     }
     
-    public static void llenarServicios() {
+    public static void llenarServicios() throws FileNotFoundException {
         
-        Servicio escuela = new Servicio("Escuela", "/servicios/schools/school.png", 1500.0, 150);
-        Servicio calleHorizontal = new Servicio("Calle Horizontal", "/servicios/street1.png", 50.0, 10.0);
-        Servicio calleVertical = new Servicio("Calle Vertical", "/servicios/streetvertical.png", 50.0, 10.0);
-        Servicio parque = new Servicio("Parque", "/servicios/park/park1.png", 1500.0, 150.0);
-        Servicio electricidad = new Servicio("Electricidad", "/servicios/electricity/electricity.png", 500.0, 200.0);
-        Servicio agua = new Servicio("Agua", "/servicios/water/water.png", 500.0, 150.0);
-        Servicio policia = new Servicio("Policia", "/servicios/hospital.png", 700.0, 700.0);
-        Servicio hospital = new Servicio("Hospital", "/servicios/police.png", 1400.0, 800.0);
+        try {
+            FileReader archivo = new FileReader("/archivos/servicios.txt");
+            BufferedReader buffer = new BufferedReader(archivo);
+            
+            String linea = buffer.readLine();
+            buffer.readLine();
+            
+            while(linea != null) {
+                
+                String [] lineaSeparada = linea.split(",");
+                String nombre = lineaSeparada[0];
+                String ruta = lineaSeparada[1];
+                double precioConstruccion = Double.parseDouble(lineaSeparada[2]);
+                double precioMensual = Double.parseDouble(lineaSeparada[3]);
+                
+                listaServicios.add(new Servicio(nombre, ruta, precioConstruccion, precioMensual));
+                
+            }
+            
+        }
         
-        listaServicios.add(escuela);
-        listaServicios.add(calleHorizontal);
-        listaServicios.add(calleVertical);
-        listaServicios.add(parque);
-        listaServicios.add(electricidad);
-        listaServicios.add(agua);
-        listaServicios.add(policia);
-        listaServicios.add(hospital);
- 
+        catch (Exception e) {
+            
+        }
+        
     }
     
 }
