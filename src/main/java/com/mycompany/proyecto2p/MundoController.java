@@ -1,5 +1,6 @@
 package com.mycompany.proyecto2p;
 
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -34,6 +35,7 @@ public class MundoController implements Initializable {
         
         hiloDelTiempo.start();
         
+
         llenarTerreno(8, 8);
     }
     
