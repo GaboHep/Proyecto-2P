@@ -6,11 +6,13 @@ import javafx.application.Platform;
 import javafx.scene.control.Label;
 
 public class Tiempo {
+    
     private LocalDate fecha = LocalDate.now();
     private DateTimeFormatter formato = DateTimeFormatter.ISO_DATE;
     
     public void siguienteDia() {
         fecha = fecha.plusDays(1);
+        
     }
 
     public static void transcursoDelTiempo(Label lblTiempo, Tiempo tiempo) {
@@ -24,15 +26,18 @@ public class Tiempo {
             catch(InterruptedException ex) {
             }
         }
+        
     }    
     
     public LocalDate getFecha() {
         return fecha;
+        
     }
 
     @Override
     public String toString() {
         String resultado = fecha.format(formato);
         return resultado;
+        
     }
 }
