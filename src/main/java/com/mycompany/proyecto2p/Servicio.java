@@ -40,6 +40,7 @@ public class Servicio {
 
                 listaServicios.add(new Servicio(nombre, ruta, precioConstruccion, precioMensual));
 
+                buffer.readLine();
             }
 
             buffer.close();
