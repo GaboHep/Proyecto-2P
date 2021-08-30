@@ -25,11 +25,14 @@ public class MundoController implements Initializable {
     private VBox vboxServicios;
     @FXML
     private ComboBox cbServicios;
+    
+    public Ciudad ciudad;
 
     @Override
 
     public void initialize(URL url, ResourceBundle rb) {
-        //Acción que inicia el tiempo de la ciudad      
+        //Acción que inicia el tiempo de la ciudad
+        
         Servicio.llenarServicios();
         llenarTerreno(8, 8);
         cbServicios.getItems().addAll(Servicio.listaServicios);
@@ -69,7 +72,11 @@ public class MundoController implements Initializable {
         
         
        
-       }
+    }
+    
+    public void establecerCiudad(Ciudad ciudad){
+        this.ciudad=ciudad;
+    }
        
 }
 

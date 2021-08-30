@@ -7,6 +7,7 @@ import javafx.application.Platform;
 import javafx.scene.control.Label;
 
 public class Ciudad {
+    public static ArrayList<Ciudad> ciudades=new ArrayList<>();
     private String nombre;
     private String nombreAlcalde;
     private LocalDate fecha = LocalDate.now();
