@@ -46,6 +46,7 @@ public class MundoController implements Initializable {
     public void llenarTerreno(int Columnas, int Filas) {
               
         GridPane gridpane = new GridPane();
+         
         
         if (Columnas > 0 && Filas > 0) {
             
@@ -57,8 +58,9 @@ public class MundoController implements Initializable {
                 for (int y = 0; y < Filas; y++) {
                     StackPane stack=new StackPane();
                     ImageView imgvw = new ImageView(grassTile);
-                                                          
-                    stack.getChildren().addAll(imgvw);
+                    
+                    //stack.setOnMouseClicked(()->crearServicio());
+                    stack.getChildren().add(imgvw);
                     gridpane.add(stack, x, y);
                 }
             }
@@ -69,6 +71,12 @@ public class MundoController implements Initializable {
        
         
     }
+   /* public void crearServicio(){
+        
+        
+        
+    }*/
+  
    
 }
 

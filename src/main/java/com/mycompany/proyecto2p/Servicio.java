@@ -3,6 +3,8 @@ package com.mycompany.proyecto2p;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class Servicio {
@@ -21,14 +23,12 @@ public class Servicio {
         this.precioMensual = precioMensual;
     }
     
-    public static void llenarServicios() throws FileNotFoundException {
+    public static void llenarServicios(){
         
-        try {
-            FileReader archivo = new FileReader("/archivos/servicios.txt");
-            BufferedReader buffer = new BufferedReader(archivo);
+        try(BufferedReader lector=new BufferedReader(new InputStreamReader(App.class.getResourceAsStream("archivos/servicios.txt")))) {
+            lector.readLine();
+            String linea = lector.readLine();
             
-            String linea = buffer.readLine();
-            buffer.readLine();
             
             while(linea != null) {
                 
@@ -40,13 +40,15 @@ public class Servicio {
                 
                 listaServicios.add(new Servicio(nombre, ruta, precioConstruccion, precioMensual));
                 
+                linea=lector.readLine();
             }
             
-        }
-        
-        catch (Exception e) {
+        } 
+        catch (IOException ex) {
             
         }
+            
+        
         
     }
     
