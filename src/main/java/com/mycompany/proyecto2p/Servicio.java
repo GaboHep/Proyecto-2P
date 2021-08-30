@@ -57,7 +57,7 @@ public class Servicio {
             Servicio calleVertical = new Servicio("Calle Vertical","/servicios/streetvertical.png",50,10);
             Servicio parque = new Servicio("Parque","/servicios/park/park1.png",1500,150);
             Servicio electricidad = new Servicio("Electricidad","/servicios/electricity/electricity.png",500,200);
-            Servicio electricidad = new Servicio("Agua","/servicios/water/water.png",500,150);
+            Servicio agua = new Servicio("Agua","/servicios/water/water.png",500,150);
             Servicio policia = new Servicio("Policia","/servicios/hospital.png",700,700);
             Servicio hospital = new Servicio("Hospital","/servicios/police.png",1400,800);
 
@@ -66,6 +66,7 @@ public class Servicio {
             listaServicios.add(calleVertical);
             listaServicios.add(parque);
             listaServicios.add(electricidad);
+            listaServicios.add(agua);
             listaServicios.add(policia);
             listaServicios.add(hospital);
             
