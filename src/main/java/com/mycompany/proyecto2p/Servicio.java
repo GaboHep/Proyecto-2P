@@ -8,9 +8,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class Servicio {
-    
+
     public static ArrayList<Servicio> listaServicios = new ArrayList<>();
-    
+
     private String nombre;
     private String ruta;
     private double precioConstruccion;
@@ -21,38 +21,58 @@ public class Servicio {
         this.ruta = ruta;
         this.precioConstruccion = precioConstruccion;
         this.precioMensual = precioMensual;
-    }
-    
-    public static void llenarServicios(){
-        
-        try(BufferedReader lector=new BufferedReader(new InputStreamReader(App.class.getResourceAsStream("archivos/servicios.txt")))) {
-            lector.readLine();
-            String linea = lector.readLine();
-            
-            
+    }          
+          
+
+    public static void llenarServicios() throws FileNotFoundException {
+
+        try {
+            FileReader archivo = new FileReader("/archivos/servicios.txt");
+            BufferedReader buffer = new BufferedReader(archivo);
+
+            String linea = buffer.readLine();
+            buffer.readLine();
+
+
             while(linea != null) {
-                
+
                 String [] lineaSeparada = linea.split(",");
-                String nombre = lineaSeparada[0];
-                String ruta = lineaSeparada[1];
+                String nombre = lineaSeparada[0].strip();
+                String ruta = lineaSeparada[1].strip();
                 double precioConstruccion = Double.parseDouble(lineaSeparada[2]);
                 double precioMensual = Double.parseDouble(lineaSeparada[3]);
-                
+
                 listaServicios.add(new Servicio(nombre, ruta, precioConstruccion, precioMensual));
-                
-                linea=lector.readLine();
+  
+                linea=buffer.readLine();
             }
             
         } 
         catch (IOException ex) {
             
         }
-            
-        
-        
+     }
+
+    public static ArrayList<Servicio> getListaServicios() {
+        return listaServicios;
     }
-    
-    // ponerServicio
-    // quitarServicio
-    
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getRuta() {
+        return ruta;
+    }
+
+    public double getPrecioConstruccion() {
+        return precioConstruccion;
+    }
+
+    public double getPrecioMensual() {
+        return precioMensual;
+    }
+
+
+
 }

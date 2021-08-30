@@ -1,18 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.proyecto2p;
 
 import static com.mycompany.proyecto2p.Configuracion.PRESUPUESTO_INICIAL_DIFICIL;
 import static com.mycompany.proyecto2p.Configuracion.PRESUPUESTO_INICIAL_FACIL;
 import static com.mycompany.proyecto2p.Configuracion.PRESUPUESTO_INICIAL_MEDIO;
 
-/**
- *
- * @author Howard Lima
- */
 public class Dinero {
     private double presupuesto;
     private double impuestoRenta;
