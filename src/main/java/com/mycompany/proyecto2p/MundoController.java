@@ -2,6 +2,7 @@ package com.mycompany.proyecto2p;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -47,6 +48,9 @@ public class MundoController implements Initializable {
         lblNombreCiudad.setText(ciudad.getNombre());
         lblNombreAlcalde.setText(ciudad.getNombreAlcalde());
         
+        Thread t=new Thread(new Tiempo());
+        t.start();
+        
         
     }
     /*
@@ -57,7 +61,22 @@ public class MundoController implements Initializable {
             }
         }
     }*/
+    //Clase para controlar el presupuesto en tiempo real
+    class Tiempo implements Runnable{
+        @Override
+        public void run(){
+            while(true){
+                try {
+                Platform.runLater(()->lblPresupuesto.setText("Presupuesto: "+ciudad.getPresupuesto()));
+                
+                Thread.sleep(10);   
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+            } 
+    }
     
+}
     public void llenarTerreno(int Columnas, int Filas) {
               
         GridPane gridpane = new GridPane();
@@ -89,6 +108,8 @@ public class MundoController implements Initializable {
     public void construirServicios(StackPane s){
         Servicio ser=(Servicio)cbServicios.getValue();
         s.getChildren().add(new ImageView(new Image(ser.getRuta(),45,45,true,true)));
+        ciudad.disminuirPresupuesto(ser.getPrecioConstruccion());
+        
         
         
        

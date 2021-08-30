@@ -13,7 +13,7 @@
          <children>
             <Label fx:id="lblNombreCiudad" alignment="CENTER" prefHeight="35.0" prefWidth="100.0" text="Nombre ciudad" />
             <Label fx:id="lblNombreAlcalde" alignment="CENTER" prefHeight="35.0" prefWidth="100.0" text="Nombre alcalde" />
-            <Label fx:id="lblPresupuesto" alignment="CENTER" prefHeight="35.0" prefWidth="100.0" text="Presupuesto" />
+            <Label fx:id="lblPresupuesto" alignment="CENTER" prefHeight="35.0" prefWidth="176.0" />
             <Label fx:id="lblTiempo" alignment="CENTER" prefHeight="35.0" prefWidth="100.0" text="Tiempo" />
          </children>
       </HBox>

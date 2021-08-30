@@ -39,10 +39,10 @@ public class Ciudad {
     
     
     //Metodos que sirven para cuando se gaste o gane dinero en la ciudad.
-    public void disminuirPresupuesto(int cantidad){
+    public void disminuirPresupuesto(double cantidad){
         presupuesto=presupuesto-cantidad;
     }
-    public void aumentarPresupuesto(int cantidad){
+    public void aumentarPresupuesto(double cantidad){
         presupuesto=presupuesto+cantidad;
     }
     
