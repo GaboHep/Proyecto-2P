@@ -1,5 +1,6 @@
 package com.mycompany.proyecto2p;
 
+import java.io.FileNotFoundException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +15,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("Menu"), 640, 480);
+        scene = new Scene(loadFXML("Menu"));
         stage.setScene(scene);
         stage.show();
     }
@@ -28,7 +29,7 @@ public class App extends Application {
         return fxmlLoader.load();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
         launch();
     }
 
