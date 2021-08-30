@@ -3,6 +3,7 @@ package com.mycompany.proyecto2p;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Servicio {
@@ -21,7 +22,7 @@ public class Servicio {
         this.precioMensual = precioMensual;
     }
 
-    public static void llenarServicios() throws FileNotFoundException {
+    public static void llenarServicios() throws FileNotFoundException, IOException {
 
         try {
             FileReader archivo = new FileReader("/archivos/servicios.txt");
@@ -47,11 +48,7 @@ public class Servicio {
 
         }
 
-        catch (Exception e) {
-
-        }
-
-        finally {
+        catch (FileNotFoundException e) {
 
             Servicio escuela = new Servicio("Escuela", "/servicios/schools/school.png", 1500, 150);
             Servicio calleHorizontal = new Servicio("CalleHorizontal", "/servicios/street1.png", 1500, 150);
