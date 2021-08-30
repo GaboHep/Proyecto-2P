@@ -48,27 +48,37 @@ public class MundoController implements Initializable {
         lblNombreCiudad.setText(ciudad.getNombre());
         lblNombreAlcalde.setText(ciudad.getNombreAlcalde());
         
-        Thread t=new Thread(new Tiempo());
+        Thread t=new Thread(new TiempoDinero());
+        Thread t2=new Thread(new Fecha());
+        
         t.start();
+        t2.start();
         
         
     }
-    /*
-    public void controlarTiempo(){
-        while(true){
-            try{
-                Thread.sleap()
+    
+    class Fecha implements Runnable{
+        @Override
+        public void run(){
+            while(true){
+                try{
+                    Platform.runLater(() -> lblTiempo.setText(ciudad.fechaToString()));
+                    ciudad.siguienteDia();
+                    Thread.sleep(Configuracion.DURACION_DIA_SEGUNDOS * 1000);
+                }catch(InterruptedException ex){
+                    
+                }
             }
         }
-    }*/
+    }
     //Clase para controlar el presupuesto en tiempo real
-    class Tiempo implements Runnable{
+    class TiempoDinero implements Runnable{
         @Override
         public void run(){
             while(true){
                 try {
                 Platform.runLater(()->lblPresupuesto.setText("Presupuesto: "+ciudad.getPresupuesto()));
-                
+                                
                 Thread.sleep(10);   
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
@@ -104,6 +114,7 @@ public class MundoController implements Initializable {
         borderPane.setAlignment(gridpane,Pos.CENTER);
         
     }
+    //Método de construcción de servicios del alcalde
     
     public void construirServicios(StackPane s){
         Servicio ser=(Servicio)cbServicios.getValue();
@@ -115,10 +126,7 @@ public class MundoController implements Initializable {
        
     }
     
-    public void establecerCiudad(Ciudad ciudad){
-        this.ciudad=ciudad;
-    }
-    
+    //Imagen de vista previa al construir un servicio
     public void vistaPrevia(){
         
         Servicio s=(Servicio)cbServicios.getValue();

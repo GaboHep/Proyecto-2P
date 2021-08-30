@@ -61,19 +61,6 @@ public class Ciudad {
         fecha = fecha.plusDays(1);
     }
     
-    public void transcursoDelTiempo(Label lblTiempo) {
-
-        while (true) {
-            try {
-                Platform.runLater(() -> lblTiempo.setText(fechaToString()));
-                siguienteDia();
-                Thread.sleep(Configuracion.DURACION_DIA_SEGUNDOS * 1000);
-            }
-            catch(InterruptedException ex) {
-            }
-        }
-    
-    }
 
     public String getNombre() {
         return nombre;
