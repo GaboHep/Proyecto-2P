@@ -32,9 +32,9 @@ public class App extends Application {
         Servicio.llenarServicios();
         launch();
         
-        for (Servicio servicio: Servicio.listaServicios) {
-            System.out.println(servicio);
-        }
+        System.out.println(Servicio.listaServicios.size());
+        
+        
 
     }
 

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class Servicio {
@@ -22,53 +23,20 @@ public class Servicio {
         this.precioMensual = precioMensual;
     }
 
-    public static void llenarServicios() throws FileNotFoundException, IOException {
-
-        try {
-            FileReader archivo = new FileReader("/archivos/servicios.txt");
-            BufferedReader buffer = new BufferedReader(archivo);
-
-            String linea = buffer.readLine();
-            buffer.readLine();
-
-            while(linea != null) {
-
-                String [] lineaSeparada = linea.split(",");
-                String nombre = lineaSeparada[0].strip();
-                String ruta = lineaSeparada[1].strip();
-                double precioConstruccion = Double.parseDouble(lineaSeparada[2]);
-                double precioMensual = Double.parseDouble(lineaSeparada[3]);
-
-                listaServicios.add(new Servicio(nombre, ruta, precioConstruccion, precioMensual));
-
-                buffer.readLine();
-            }
-
-            buffer.close();
-
-        }
-
-        catch (FileNotFoundException e) {
-
-            Servicio escuela = new Servicio("Escuela", "/servicios/schools/school.png", 1500, 150);
-            Servicio calleHorizontal = new Servicio("CalleHorizontal", "/servicios/street1.png", 1500, 150);
-            Servicio calleVertical = new Servicio("Calle Vertical","/servicios/streetvertical.png",50,10);
-            Servicio parque = new Servicio("Parque","/servicios/park/park1.png",1500,150);
-            Servicio electricidad = new Servicio("Electricidad","/servicios/electricity/electricity.png",500,200);
-            Servicio agua = new Servicio("Agua","/servicios/water/water.png",500,150);
-            Servicio policia = new Servicio("Policia","/servicios/hospital.png",700,700);
-            Servicio hospital = new Servicio("Hospital","/servicios/police.png",1400,800);
-
-            listaServicios.add(escuela);
-            listaServicios.add(calleHorizontal);
-            listaServicios.add(calleVertical);
-            listaServicios.add(parque);
-            listaServicios.add(electricidad);
-            listaServicios.add(agua);
-            listaServicios.add(policia);
-            listaServicios.add(hospital);
+    public static void llenarServicios(){
+        try(BufferedReader r=new BufferedReader(new InputStreamReader(App.class.getResourceAsStream("archivos/servicios.txt")))){
+            String cabezera=r.readLine();
+            String linea=r.readLine();
             
+            while(linea!=null){
+                String[] datos=linea.split(",");
+                listaServicios.add(new Servicio(datos[0],datos[1],Double.parseDouble(datos[2]),Double.parseDouble(datos[3])));
+                linea=r.readLine();
+            }
+        }catch(IOException e){
+            e.printStackTrace();
         }
+       
 
     }
 
