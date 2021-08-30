@@ -13,7 +13,7 @@ public class Ciudad {
     private String nombreAlcalde;
     private LocalDate fecha = LocalDate.now();
     private double presupuesto;
-    private Servicio [][] servicios=new Servicio[8][8];
+    private ArrayList<Servicio> servicios=new ArrayList<>();
 
     public Ciudad(String nombre, String nombreAlcalde, double presupuesto) {
         this.nombre = nombre;

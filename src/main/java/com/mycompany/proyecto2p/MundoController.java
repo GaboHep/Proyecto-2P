@@ -50,9 +50,11 @@ public class MundoController implements Initializable {
         
         Thread t=new Thread(new TiempoDinero());
         Thread t2=new Thread(new Fecha());
+        Thread t3=new Thread(new CobroPago());
         
         t.start();
         t2.start();
+        t3.start();
         
         
     }
@@ -85,8 +87,26 @@ public class MundoController implements Initializable {
                 }
             } 
     }
-    
-}
+    }    
+    class CobroPago implements Runnable{
+        @Override
+        public void run(){
+            while(true){
+                try{
+                    Thread.sleep(Configuracion.DURACION_MES_SEGUNDOS*1000);
+                    double aPagar=0;
+                    for(Servicio s: Servicio.listaServicios){
+                        aPagar+=s.getPrecioMensual();
+                    }
+                    ciudad.disminuirPresupuesto(aPagar);
+                    
+                }catch(InterruptedException ex){
+                    
+                }
+            }
+        }
+    }
+
     public void llenarTerreno(int Columnas, int Filas) {
               
         GridPane gridpane = new GridPane();
@@ -120,6 +140,7 @@ public class MundoController implements Initializable {
         Servicio ser=(Servicio)cbServicios.getValue();
         s.getChildren().add(new ImageView(new Image(ser.getRuta(),45,45,true,true)));
         ciudad.disminuirPresupuesto(ser.getPrecioConstruccion());
+        Servicio.listaServicios.add(ser);
         
         
         
