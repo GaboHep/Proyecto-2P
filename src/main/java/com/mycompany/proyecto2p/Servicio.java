@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class Servicio {
@@ -21,10 +20,9 @@ public class Servicio {
         this.ruta = ruta;
         this.precioConstruccion = precioConstruccion;
         this.precioMensual = precioMensual;
-    }          
-          
+    }
 
-    public static void llenarServicios() throws FileNotFoundException {
+    public static void llenarServicios() throws FileNotFoundException, IOException {
 
         try {
             FileReader archivo = new FileReader("/archivos/servicios.txt");
@@ -32,7 +30,6 @@ public class Servicio {
 
             String linea = buffer.readLine();
             buffer.readLine();
-
 
             while(linea != null) {
 
@@ -43,15 +40,37 @@ public class Servicio {
                 double precioMensual = Double.parseDouble(lineaSeparada[3]);
 
                 listaServicios.add(new Servicio(nombre, ruta, precioConstruccion, precioMensual));
-  
-                linea=buffer.readLine();
+
+                buffer.readLine();
             }
-            
-        } 
-        catch (IOException ex) {
+
+            buffer.close();
+
+        }
+
+        catch (FileNotFoundException e) {
+
+            Servicio escuela = new Servicio("Escuela", "/servicios/schools/school.png", 1500, 150);
+            Servicio calleHorizontal = new Servicio("CalleHorizontal", "/servicios/street1.png", 1500, 150);
+            Servicio calleVertical = new Servicio("Calle Vertical","/servicios/streetvertical.png",50,10);
+            Servicio parque = new Servicio("Parque","/servicios/park/park1.png",1500,150);
+            Servicio electricidad = new Servicio("Electricidad","/servicios/electricity/electricity.png",500,200);
+            Servicio agua = new Servicio("Agua","/servicios/water/water.png",500,150);
+            Servicio policia = new Servicio("Policia","/servicios/hospital.png",700,700);
+            Servicio hospital = new Servicio("Hospital","/servicios/police.png",1400,800);
+
+            listaServicios.add(escuela);
+            listaServicios.add(calleHorizontal);
+            listaServicios.add(calleVertical);
+            listaServicios.add(parque);
+            listaServicios.add(electricidad);
+            listaServicios.add(agua);
+            listaServicios.add(policia);
+            listaServicios.add(hospital);
             
         }
-     }
+
+    }
 
     public static ArrayList<Servicio> getListaServicios() {
         return listaServicios;
