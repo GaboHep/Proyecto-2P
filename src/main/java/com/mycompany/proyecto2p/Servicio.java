@@ -60,6 +60,8 @@ public class Servicio {
         return precioMensual;
     }
 
-
+    public String toString(){
+        return nombre;
+    }
 
 }

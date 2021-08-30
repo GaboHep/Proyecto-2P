@@ -4,13 +4,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 public class MundoController implements Initializable {
 
@@ -21,24 +22,19 @@ public class MundoController implements Initializable {
     @FXML
     private Label lblPresupuesto;
     @FXML
-    private HBox hboxInfo;
+    private VBox vboxServicios;
+    @FXML
+    private ComboBox cbServicios;
 
     @Override
 
     public void initialize(URL url, ResourceBundle rb) {
         //Acción que inicia el tiempo de la ciudad      
-
+        Servicio.llenarServicios();
         llenarTerreno(8, 8);
+        cbServicios.getItems().addAll(Servicio.listaServicios);
+        
     }
-    
-   /* public void controlarTiempo(){
-        Tiempo tiempo = new Tiempo();
-        
-        Thread hiloDelTiempo = new Thread(() -> Tiempo.transcursoDelTiempo(lblTiempo, tiempo));
-        
-        hiloDelTiempo.start();
-
-    }*/
     
     public void llenarTerreno(int Columnas, int Filas) {
               
@@ -56,7 +52,7 @@ public class MundoController implements Initializable {
                     StackPane stack=new StackPane();
                     ImageView imgvw = new ImageView(grassTile);
                     
-                    //stack.setOnMouseClicked(()->crearServicio());
+                    stack.setOnMouseClicked(t->construirServicios(stack));
                     stack.getChildren().add(imgvw);
                     gridpane.add(stack, x, y);
                 }
@@ -66,12 +62,15 @@ public class MundoController implements Initializable {
         borderPane.setCenter(gridpane);
         
     }
-   /* public void crearServicio(){
+    
+    public void construirServicios(StackPane s){
+        Servicio ser=(Servicio)cbServicios.getValue();
+        s.getChildren().add(new ImageView(new Image(ser.getRuta(),45,45,true,true)));
         
         
-        
-    }*/
-  
-   
+       
+       }
+       
 }
+
 

@@ -10,10 +10,6 @@ public class Ciudad {
     private String nombre;
     private String nombreAlcalde;
     private LocalDate fecha = LocalDate.now();
-
-    public LocalDate getFecha() {
-        return fecha;
-    }
     private double presupuesto;
     private ArrayList <Servicio> servicios=new ArrayList<>();
 
@@ -35,7 +31,9 @@ public class Ciudad {
         this.presupuesto = presupuesto;
     }
 
-    
+    public LocalDate getFecha() {
+        return fecha;
+    }
     
     
     //Metodos que sirven para cuando se gaste o gane dinero en la ciudad.
