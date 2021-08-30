@@ -45,6 +45,7 @@ public class NuevaPartidaController implements Initializable {
     @FXML
     private void comenzarNuevaPartida(ActionEvent event) throws IOException {
         Ciudad ciudad = new Ciudad(txtNombreCiudad.getText(), txtNombreAlcalde.getText(), calcularPresupuesto());
+        Ciudad.ciudadUtilizada=ciudad;
         App.setRoot("Mundo");
     }
     

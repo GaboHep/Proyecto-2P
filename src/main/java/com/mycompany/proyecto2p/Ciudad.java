@@ -3,16 +3,17 @@ package com.mycompany.proyecto2p;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 import javafx.application.Platform;
 import javafx.scene.control.Label;
 
 public class Ciudad {
-    public static ArrayList<Ciudad> ciudades=new ArrayList<>();
+    public static Ciudad ciudadUtilizada;
     private String nombre;
     private String nombreAlcalde;
     private LocalDate fecha = LocalDate.now();
     private double presupuesto;
-    private ArrayList <Servicio> servicios=new ArrayList<>();
+    private Servicio [][] servicios=new Servicio[8][8];
 
     public Ciudad(String nombre, String nombreAlcalde, double presupuesto) {
         this.nombre = nombre;
@@ -73,4 +74,18 @@ public class Ciudad {
         }
     
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getNombreAlcalde() {
+        return nombreAlcalde;
+    }
+
+    public double getPresupuesto() {
+        return presupuesto;
+    }
+    
+    
 }

@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -22,22 +23,40 @@ public class MundoController implements Initializable {
     @FXML
     private Label lblPresupuesto;
     @FXML
+    private Label lblNombreCiudad;
+    @FXML
+    private Label lblNombreAlcalde;
+    @FXML
     private VBox vboxServicios;
     @FXML
     private ComboBox cbServicios;
+    @FXML
+    private ImageView vistaPrevia;
+    @FXML
+    private Label infoVistaPrevia;
     
-    public Ciudad ciudad;
+    public Ciudad ciudad=Ciudad.ciudadUtilizada;
 
     @Override
 
-    public void initialize(URL url, ResourceBundle rb) {
-        //Acción que inicia el tiempo de la ciudad
-        
+    public void initialize(URL url, ResourceBundle rb) {       
         Servicio.llenarServicios();
         llenarTerreno(8, 8);
         cbServicios.getItems().addAll(Servicio.listaServicios);
         
+        lblNombreCiudad.setText(ciudad.getNombre());
+        lblNombreAlcalde.setText(ciudad.getNombreAlcalde());
+        
+        
     }
+    /*
+    public void controlarTiempo(){
+        while(true){
+            try{
+                Thread.sleap()
+            }
+        }
+    }*/
     
     public void llenarTerreno(int Columnas, int Filas) {
               
@@ -63,6 +82,7 @@ public class MundoController implements Initializable {
         }
         
         borderPane.setCenter(gridpane);
+        borderPane.setAlignment(gridpane,Pos.CENTER);
         
     }
     
@@ -76,6 +96,14 @@ public class MundoController implements Initializable {
     
     public void establecerCiudad(Ciudad ciudad){
         this.ciudad=ciudad;
+    }
+    
+    public void vistaPrevia(){
+        
+        Servicio s=(Servicio)cbServicios.getValue();
+        Image imagen=new Image(s.getRuta());
+        vistaPrevia.setImage(imagen);
+        infoVistaPrevia.setText("Precio construccion: "+s.getPrecioConstruccion()+"\nPrecio Mantenimiento: "+s.getPrecioMensual());
     }
        
 }
