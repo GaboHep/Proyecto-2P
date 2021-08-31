@@ -1,6 +1,11 @@
 package com.mycompany.proyecto2p;
 
+import java.lang.reflect.Array;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -40,7 +45,7 @@ public class MundoController implements Initializable {
     
     public Ciudad ciudad=Ciudad.ciudadUtilizada;
     private int mesesEnBancarrota=0;
-
+    
     @Override
 
     public void initialize(URL url, ResourceBundle rb) {       
@@ -48,6 +53,7 @@ public class MundoController implements Initializable {
         Construccion.llenarConstrucciones();
         llenarTerreno( Configuracion.COLUMNAS, Configuracion.FILAS);
         cbServicios.getItems().addAll(Servicio.listaServicios);
+        cbServicios.getItems().addAll(Construccion.Construcciones);
         
         lblNombreCiudad.setText(ciudad.getNombre());
         lblNombreAlcalde.setText(ciudad.getNombreAlcalde());
@@ -118,10 +124,14 @@ public class MundoController implements Initializable {
                     }  
                     ciudad.disminuirPresupuesto(aPagar);
                     ciudad.aumentarPresupuesto(aCobrar);
+                    
                     if(ciudad.getPresupuesto()<=0){
                         mesesEnBancarrota++;  
                     }
-                    if(mesesEnBancarrota==3){
+                    if(mesesEnBancarrota==Configuracion.MESES_QUIEBRA){
+                        Alert a=new Alert(AlertType.INFORMATION);
+                        a.setTitle("GAME OVER");
+                        a.setContentText("Su ciudad cayó en bancarrota");
                         Platform.exit();
                         System.exit(0); //Hago así porque no estoy realizando la sobreescritura.
                     }
@@ -166,39 +176,71 @@ public class MundoController implements Initializable {
     //Método de construcción de servicios del alcalde
     
     public void construirServicios(StackPane s,int x,int y){
-        Servicio ser=(Servicio)cbServicios.getValue();
-        if(ser!=null){
-            s.getChildren().add(new ImageView(new Image(ser.getRuta(),45,45,true,true)));
-            ciudad.disminuirPresupuesto(ser.getPrecioConstruccion());
-            //Agrego este servicio con su posición a un Array 2d que lo almacena
-            ciudad.edificios2d[x][y]=ser;
-            Servicio.listaServicios.add(ser);
-        }else{ //Por si se clickea en los paneles sin seleciconar construccion
-            Alert a=new Alert(AlertType.INFORMATION);
-            a.setTitle("Error");
-            a.setContentText("No ha seleccionado una construcción");
-            a.show();
+        if(cbServicios.getValue()!=null){
+           if(cbServicios.getValue() instanceof Servicio){
+                Servicio ser=(Servicio)cbServicios.getValue();
+                s.getChildren().add(new ImageView(new Image(ser.getRuta(),45,45,true,true)));
+                ciudad.disminuirPresupuesto(ser.getPrecioConstruccion());
+                //Agrego este servicio con su posición a un Array 2d que lo almacena
+                ciudad.edificios2d[x][y]=ser;
+                
+            }else if(cbServicios.getValue()instanceof Construccion){
+                Construccion cons=(Construccion) cbServicios.getValue();
+                s.getChildren().add(new ImageView(new Image(cons.getRuta(),45,45,true,true)));
+                ciudad.edificios2d[x][y]=cons;
+            }
         }
-        
-        
-        
+            
+        else{ //Por si se clickea en los paneles sin seleciconar construccion
+                Alert a=new Alert(AlertType.INFORMATION);
+                a.setTitle("Error");
+                a.setContentText("No ha seleccionado una construcción");
+                a.show();
+            }
+
+             
        
     }
     
     //Imagen de vista previa al construir un servicio
     public void vistaPrevia(){
-        
-        Servicio s=(Servicio)cbServicios.getValue();
-        Image imagen=new Image(s.getRuta());
-        vistaPrevia.setImage(imagen);
-        infoVistaPrevia.setText("Precio construccion: "+s.getPrecioConstruccion()+"\nPrecio Mantenimiento: "+s.getPrecioMensual());
+        if(cbServicios.getValue() instanceof Servicio){
+            Servicio s=(Servicio)cbServicios.getValue();
+            Image imagen=new Image(s.getRuta());
+            vistaPrevia.setImage(imagen);
+            infoVistaPrevia.setText("Precio construccion: "+s.getPrecioConstruccion()+"\nPrecio Mantenimiento: "+s.getPrecioMensual());
+        }else if(cbServicios.getValue() instanceof Construccion){
+            Construccion c=(Construccion) cbServicios.getValue();
+            Image imagen=new Image(c.getRuta());
+            vistaPrevia.setImage(imagen);
+            infoVistaPrevia.setText("Ingresos mensuales: "+c.valorAPagar());
+        }
     }
     /*
     public void construccionesAleatorias(){
+        for (int x = 0; x < Configuracion.COLUMNAS; x++) {
+                for (int y = 0; y < Configuracion.FILAS; y++) {
+                    if(ciudad.edificios2d[x][y]==null){
+                        Random r=new Random();
+                        List <Integer> lista=Arrays.asList(0,1,2,3,4,5);
+                        int prob=lista.get(r.nextInt(lista.size()));
+                        if(prob==1){
+                            Construccion c=Construccion.Construcciones.get(r.nextInt(Construccion.Construcciones.size()));
+                            ciudad.edificios2d[x][y]=c;
+                            
+                            gridpane.add(new ImageView(new Image(c.getRuta())),x,y);
+                            
+                                    
+                        }
+                        
+                    }
+                }
         
         
     }*/
        
 }
+    
+
 
 

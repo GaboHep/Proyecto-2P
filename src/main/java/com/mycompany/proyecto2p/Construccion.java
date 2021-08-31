@@ -51,6 +51,12 @@ public class Construccion {
     public int valorAPagar(){
         return valorAP+valorAgua+impuestoSM;
     }
+    public String getRuta(){
+        return ruta;
+    }
     
+    public String toString(){
+        return nombre;
+    }
     
 }
