@@ -6,7 +6,7 @@ public class Vecindario {
 
     int radioVecindario = Configuracion.VECINDARIO;
 
-    public void buscarVecindario(int indiceColumna, int indiceFila) {
+    public ArrayList buscarVecindario(int indiceColumna, int indiceFila) {
 
         ArrayList <Integer> listaCeldasOcupadas = new ArrayList<>();
 
@@ -25,6 +25,8 @@ public class Vecindario {
                 }
 
             }
+            
+            return listaCeldasOcupadas;
 
         }
 
@@ -43,6 +45,8 @@ public class Vecindario {
                 }
 
             }
+            
+            return listaCeldasOcupadas;
 
         }
 
@@ -61,6 +65,8 @@ public class Vecindario {
                 }
 
             }
+            
+            return listaCeldasOcupadas;
 
         }
 
@@ -81,6 +87,8 @@ public class Vecindario {
             }
 
         }
+        
+        return listaCeldasOcupadas;
 
     }
 
