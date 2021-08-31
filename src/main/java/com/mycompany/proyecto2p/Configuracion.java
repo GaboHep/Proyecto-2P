@@ -3,9 +3,9 @@ package com.mycompany.proyecto2p;
 // Clase Configuracion contiene constanstes que utiliza el juego
 
 public class Configuracion {
-    
-    public static final int FILAS = 18;
-    public static final int COLUMNAS = 30;
+    //Por cuestiones estéticas no modifique las columnas y filas :c
+    public static final int FILAS = 8;
+    public static final int COLUMNAS = 8;
     public static final double PRESUPUESTO_INICIAL_FACIL = 20000;
     public static final double PRESUPUESTO_INICIAL_MEDIO = 10000;
     public static final double PRESUPUESTO_INICIAL_DIFICIL = 5000;
