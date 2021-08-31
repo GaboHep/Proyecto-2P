@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.Set;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,7 +24,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public class MundoController implements Initializable {
-
+    
     @FXML
     private BorderPane borderPane;
     @FXML
@@ -61,6 +62,7 @@ public class MundoController implements Initializable {
         Thread t=new Thread(new TiempoDinero());
         Thread t2=new Thread(new Fecha());
         Thread t3=new Thread(new CobroPago());
+        
         
         t.start();
         t2.start();
