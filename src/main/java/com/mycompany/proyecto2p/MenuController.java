@@ -29,7 +29,8 @@ public class MenuController implements Initializable {
     
     @FXML
     public void CargarPartida() throws IOException {
-        App.setRoot("CargarPartida");
+        Ciudad.deserializarCiudad();
+        App.setRoot("Mundo");
     }
     
 }

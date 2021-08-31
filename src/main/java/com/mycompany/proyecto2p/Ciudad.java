@@ -87,7 +87,7 @@ public class Ciudad implements Serializable {
     }
     
     //Para guardar la partida
-    public static void serializarPeliculas(){
+    public static void serializarCiudad(){
         try(ObjectOutputStream s=new ObjectOutputStream(new FileOutputStream("ciudad.bin"))){
             s.writeObject(ciudadUtilizada);
         }catch(IOException ex){
@@ -97,7 +97,7 @@ public class Ciudad implements Serializable {
         
     }
     //Para cargar la partida.
-    public static void deserializarPeliculas(){
+    public static void deserializarCiudad(){
         try(ObjectInputStream s=new ObjectInputStream(new FileInputStream("ciudad.bin"))){
             ciudadUtilizada=(Ciudad)s.readObject();
             

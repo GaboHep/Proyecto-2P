@@ -216,6 +216,8 @@ public class MundoController implements Initializable {
             infoVistaPrevia.setText("Ingresos mensuales: "+c.valorAPagar());
         }
     }
+    
+    //Posible método de deserialización
     /*
     public void construccionesAleatorias(){
         for (int x = 0; x < Configuracion.COLUMNAS; x++) {
